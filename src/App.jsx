@@ -37,6 +37,7 @@ export default function App() {
   }
 
   return (
+    
     <main className="card">
       <Header city={weather.city} icon={weather.icon} />
       <Current
