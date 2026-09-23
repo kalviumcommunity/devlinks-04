@@ -3,8 +3,7 @@ import Header from './components/Header.jsx'
 import Current from './components/Current.jsx'
 import Forecast from './components/Forecast.jsx'
 import Footer from './components/Footer.jsx'
-// BUG (issue #11): unused import left in the file
-import { useRef } from 'react'
+// Fixed (issue #11): removed unused useRef import
 
 // Temperatures are stored in Celsius.
 const weather = {
@@ -22,18 +21,16 @@ const weather = {
 
 export default function App() {
   const [unit, setUnit] = useState('C')
-  // BUG (issue #7): leftover debug console.log
-  console.log('debug: unit is', unit)
+  // Fixed (issue #7): removed leftover debug console.log
 
-  // BUG (issue #1): Celsius→Fahrenheit conversion is wrong — it multiplies by 9/5 but
-  // forgets to add 32, so every Fahrenheit reading is off.
+  // Fixed (issue #1): Added + 32 to complete the Celsius to Fahrenheit formula
   function toDisplay(tempC) {
-    return unit === 'F' ? tempC * (9 / 5) : tempC
+    return unit === 'F' ? tempC * (9 / 5) + 32 : tempC
   }
 
-  // BUG (issue #2): the toggle sets the unit back to the SAME value, so clicking does nothing.
+  // Fixed (issue #2): Properly toggle between 'C' and 'F'
   function toggleUnit() {
-    setUnit(unit === 'C' ? 'C' : 'F')
+    setUnit(unit === 'C' ? 'F' : 'C')
   }
 
   return (
