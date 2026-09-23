@@ -1,12 +1,12 @@
+
 export default function Forecast({ days, toDisplay, unit }) {
   return (
     <section className="forecast">
       {days.map((d) => (
-        // BUG (issue #9): missing "key" prop on the mapped forecast cell.
-        // BUG (issue #5): sub-zero temps get no styling/marker, so a freezing day looks
-        // identical to a warm one (no visual cue for negative values).
-        <div className="day">
-          <span>{d.day}</span>
+        // Fixed (issue #9): added unique "key" prop to mapped forecast item
+        // Fixed (issue #5): sub-zero temperatures now get a 'freezing' class and snowflake visual cue
+        <div key={d.day} className={`day ${d.tempC < 0 ? 'freezing' : ''}`}>
+          <span>{d.day} {d.tempC < 0 ? '❄️' : ''}</span>
           <strong>{toDisplay(d.tempC)}°{unit}</strong>
         </div>
       ))}
