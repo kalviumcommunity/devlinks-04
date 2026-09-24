@@ -23,7 +23,6 @@ const weather = {
 export default function App() {
   const [unit, setUnit] = useState('C')
   // BUG (issue #7): leftover debug console.log
-  console.log('debug: unit is', unit)
 
   // BUG (issue #1): Celsius→Fahrenheit conversion is wrong — it multiplies by 9/5 but
   // forgets to add 32, so every Fahrenheit reading is off.
