@@ -31,9 +31,8 @@ export default function App() {
     return unit === 'F' ? tempC * (9 / 5) : tempC
   }
 
-  // BUG (issue #2): the toggle sets the unit back to the SAME value, so clicking does nothing.
   function toggleUnit() {
-    setUnit(unit === 'C' ? 'C' : 'F')
+    setUnit((currentUnit) => (currentUnit === 'C' ? 'F' : 'C'))
   }
 
   return (
