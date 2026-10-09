@@ -28,7 +28,7 @@ export default function App() {
   // BUG (issue #1): Celsius→Fahrenheit conversion is wrong — it multiplies by 9/5 but
   // forgets to add 32, so every Fahrenheit reading is off.
   function toDisplay(tempC) {
-    return unit === 'F' ? tempC * (9 / 5) : tempC
+    return unit === 'F' ? tempC * (9 / 5) + 32 : tempC
   }
 
   // BUG (issue #2): the toggle sets the unit back to the SAME value, so clicking does nothing.
